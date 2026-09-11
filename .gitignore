@@ -1,0 +1,30 @@
+# --- Frontend (React Native / Expo) ---
+frontend/node_modules/
+frontend/.expo/
+frontend/dist/
+frontend/web-build/
+frontend/.metro-health-check*
+frontend/npm-debug.*
+frontend/yarn-debug.*
+frontend/yarn-error.*
+frontend/.env*.local
+frontend/*.tsbuildinfo
+
+# --- Native & General ---
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+.DS_Store
+*.pem
+
+# --- Backend (Java / NetBeans) ---
+backend/target/
+backend/build/
+backend/dist/
+backend/.settings/
+backend/.classpath
+backend/.project
+backend/nbproject/private/

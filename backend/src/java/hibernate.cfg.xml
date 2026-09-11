@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/talk_verse?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC&amp;characterEncoding=utf8</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">isuru@C2001@</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">validate</property>
+        <property name="hibernate.default_catalog">talk_verse</property>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+
+        <!-- C3P0 connection pool. Fixes the recurring "40+ sleeping
+             connections / metadata lock" issue: Hibernate's built-in
+             connection handling opens a new connection per request under
+             load and never proactively releases idle ones, so with 1-3s
+             polling from the client, connections pile up fast. -->
+        <property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+        <property name="hibernate.c3p0.min_size">3</property>
+        <property name="hibernate.c3p0.max_size">15</property>
+        <property name="hibernate.c3p0.timeout">300</property>
+        <property name="hibernate.c3p0.idle_test_period">120</property>
+        <property name="hibernate.c3p0.max_statements">50</property>
+        <property name="hibernate.c3p0.acquire_increment">2</property>
+
+        <mapping class="entity.UserStatus" />
+        <mapping class="entity.User" />
+        <mapping class="entity.ChatStatus" />
+        <mapping class="entity.Chat" />
+        <mapping class="entity.ChannelStatus" />
+        <mapping class="entity.ChannelMessageStatus" />
+        <mapping class="entity.Channel" />
+        <mapping class="entity.ChannelMember" />
+        <mapping class="entity.ChannelMessage" />
+        <mapping class="entity.Contact"/>
+        <mapping class="entity.ChatHidden"/>
+        <mapping class="entity.ChatDeletedForUser"/>
+    </session-factory>
+</hibernate-configuration>
